@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #0a0f25 0%, #17244a 100%);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --text-main: #f0f4ff;
+  --text-muted: #a4b1d6;
+  --accent-blue: #3b82f6;
+  --accent-hover: #2563eb;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+#root {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.glass-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.glass-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  gap: 1rem;
+}
+
+.glass-header h1 {
+  font-weight: 700;
+  background: linear-gradient(to right, #60a5fa, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.5rem;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  padding: 2rem;
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.icon {
+  margin-bottom: 1rem;
+}
+.icon.gold { color: var(--accent-gold); }
+.icon.green { color: var(--accent-green); }
+.icon.blue { color: var(--accent-blue); }
+
+.stat-card h2 {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.big-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.interaction-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  align-items: stretch;
+}
+
+.glass-input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s;
+  min-width: 0;
+}
+
+.glass-input:focus {
+  border-color: var(--accent-blue);
+}
+
+.glass-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.glass-btn.primary {
+  background: var(--accent-blue);
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.glass-btn.primary:hover {
+  background: var(--accent-hover);
+}
+
+.glass-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid var(--glass-border);
+  transition: background 0.3s;
+}
+
+.glass-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.events-card ul {
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+.events-card li {
+  padding: 1rem;
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.events-card li:last-child {
+  border-bottom: none;
+}
+
+.events-card span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Mobile Responsiveness Requirements for Green Belt */
+@media (max-width: 768px) {
+  .interaction-area {
+    grid-template-columns: 1fr;
+  }
+  
+  .glass-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .input-group {
+    flex-direction: column;
+  }
+  
+  .glass-btn {
+    justify-content: center;
+  }
+}
