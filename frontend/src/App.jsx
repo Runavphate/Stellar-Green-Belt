@@ -135,8 +135,8 @@ function App() {
         </div>
         <div className="glass-card stat-card">
           <Activity size={36} className="icon green" />
-          <h2>Available Green Belt Tokens</h2>
-          <p className="big-value">--- GBT</p>
+          <h2>Available Starlight Tokens</h2>
+          <p className="big-value">--- SLT</p>
         </div>
       </main>
 
@@ -144,7 +144,7 @@ function App() {
         <div className="glass-card action-card">
           <ShieldCheck size={28} className="icon blue" />
           <h3>Stake Crypto</h3>
-          <p>Provide liquidity and earn GBT securely on the Stellar Testnet.</p>
+          <p>Provide liquidity and earn SLT securely on the Stellar Testnet.</p>
           <form className="input-group" onSubmit={handleStake}>
             <input type="number" placeholder="Amount (XLM)" className="glass-input" min="1" disabled={isStaking} />
             <button type="submit" className="glass-btn secondary" disabled={isStaking}>

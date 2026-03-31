@@ -1,13 +1,13 @@
-# Starlight Staking - Stellar Green Belt Submission 🟢
+# Starlight Staking - Stellar Testnet Application
 
-Welcome to **Starlight Staking**, a decentralized Web3 Application built for the Soroban Level 4 Green Belt Challenge. 
+Welcome to **Starlight Staking**, a decentralized Web3 Application built for the Soroban ecosystem. 
 
 ## 📝 Overview
-This open-source dApp provides users with a decentralized staking interface. Users can deploy real liquidity on the Stellar Testnet to receive "GreenBeltToken (GBT)" as rewards securely through the **Freighter Browser Extension**.
+This open-source dApp provides users with a decentralized staking interface. Users can deploy real liquidity on the Stellar Testnet to receive "StarlightToken (SLT)" as rewards securely through the **Freighter Browser Extension**.
 
 ### Key Features
 - **Inter-Contract Calls**: `StakingPool` contract invokes the `RewardToken` contract to mint and distribute tokens.
-- **Custom Token**: We deployed `GreenBeltToken`, simulating an SRC-20 mint interface.
+- **Custom Token**: We deployed `StarlightToken`, simulating an SRC-20 mint interface.
 - **Freighter API Integration**: Natively integrated `@stellar/freighter-api` to route transaction payload signing safely.
 - **Continuous Integration (CI/CD)**: A GitHub Action tests the build steps automatically.
 - **Premium Glassmorphism Interface**: Fully built using layout tokens and `Vanilla CSS`.
