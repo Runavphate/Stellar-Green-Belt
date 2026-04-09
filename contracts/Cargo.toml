@@ -1,7 +1,8 @@
 [workspace]
 members = [
     "reward_token",
-    "staking_pool"
+    "staking_pool",
+    "voting"
 ]
 resolver = "2"
 

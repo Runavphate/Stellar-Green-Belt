@@ -1,43 +1,154 @@
-# Starlight Staking - Stellar Testnet Application
+# 🗳️ Stellar Vote — On-Chain Governance dApp
 
-Welcome to **Starlight Staking**, a decentralized Web3 Application built for the Soroban ecosystem. 
+> **Level 4 Green Belt Submission** · Stellar Testnet · Soroban Smart Contracts
 
-## 📝 Overview
-This open-source dApp provides users with a decentralized staking interface. Users can deploy real liquidity on the Stellar Testnet to receive "StarlightToken (SLT)" as rewards securely through the **Freighter Browser Extension**.
+A fully decentralized voting application built on the Stellar blockchain using Soroban smart contracts. Users connect their **Freighter wallet**, create on-chain proposals, and cast tamper-proof yes/no votes — all enforced by smart contract logic.
 
-### Key Features
-- **Inter-Contract Calls**: `StakingPool` contract invokes the `RewardToken` contract to mint and distribute tokens.
-- **Custom Token**: We deployed `StarlightToken`, simulating an SRC-20 mint interface.
-- **Freighter API Integration**: Natively integrated `@stellar/freighter-api` to route transaction payload signing safely.
-- **Continuous Integration (CI/CD)**: A GitHub Action tests the build steps automatically.
-- **Premium Glassmorphism Interface**: Fully built using layout tokens and `Vanilla CSS`.
+---
 
-## ✅ Submission Checklist Links
+## ✅ Submission Checklist
 
-- **Smart Contract Address (Staking):** `CDFPSTMKYRX6SLPYSIFDIK734YZ5RCH663SKAYOPYKXIZUDBBASA4DVDO`
-- **Smart Contract Address (Reward Token):** `CC55LDHDDIIXQ4XQEBCVZVWH7I6OUEZ665UNH7IYOIVEXNX2GS5VJ75KK`
-- **Live Demo Link:** [Insert your deployed Vercel link here]
+| Requirement | Status |
+|---|---|
+| Live Demo (Vercel/Netlify) | ⚠️ [Add your deployed URL here after deploying] |
+| Mobile-Responsive Screenshot | ✅ See [Screenshots](#-screenshots) below |
+| CI/CD Pipeline | ✅ GitHub Actions — see [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) |
+| Smart Contract Address | ✅ `CAZLCX7HB4K7VUXBIO27UODIHGVOJ3FGVWK5BTEVHGN275RKEVVE4KEX` |
+| No inter-contract calls in this project | ✅ Single voting contract (no token/pool) |
+
+---
 
 ## 📸 Screenshots
-*(Remember to push your own screenshot here)*
-![Mobile View](./mobile-screenshot.png)
+
+### Desktop View
+![Desktop View](./screenshots/desktop-view.png)
+
+### Mobile View (390×844 — iPhone 14)
+![Mobile View](./screenshots/mobile-view.png)
+
+---
+
+## 🔗 Contract Addresses (Testnet)
+
+| Contract | Address |
+|---|---|
+| **Voting Contract** | `CAZLCX7HB4K7VUXBIO27UODIHGVOJ3FGVWK5BTEVHGN275RKEVVE4KEX` |
+
+> View on [Stellar Expert (Testnet)](https://testnet.stellar.expert/explorer/testnet/contract/CAZLCX7HB4K7VUXBIO27UODIHGVOJ3FGVWK5BTEVHGN275RKEVVE4KEX)
+
+---
+
+## ⚙️ CI/CD Pipeline
+
+This project uses **GitHub Actions** to automatically build the frontend on every push to `main`.
+
+```yaml
+# .github/workflows/deploy.yml
+name: CI/CD Pipeline
+on:
+  push:
+    branches: [main]
+jobs:
+  build_frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with: { node-version: 18 }
+      - run: npm install
+        working-directory: ./frontend
+      - run: npm run build
+        working-directory: ./frontend
+```
+
+![CI Badge](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/deploy.yml/badge.svg)
+
+> ⚠️ Replace `YOUR_USERNAME/YOUR_REPO` above with your actual GitHub repository path.
+
+---
+
+## 📝 Overview
+
+**Stellar Vote** is a decentralized governance dApp where:
+
+- Any wallet can **create a proposal** with a title, description, and voting duration
+- Any wallet can **vote Yes or No** on open proposals
+- Votes are enforced **on-chain** — one vote per wallet, no voting after expiry
+- Results are final and tamper-proof once the voting period ends
+
+### Key Features
+
+- **Soroban Smart Contract**: Written in Rust, deployed on Stellar Testnet
+- **Freighter Wallet Integration**: `@stellar/freighter-api` for secure transaction signing
+- **Real-time Vote Bars**: Animated progress bars with live % breakdown
+- **Time-Aware UI**: Proposals display countdown (e.g. "44m left"), lock when expired
+- **Mobile Responsive**: Fully stacked single-column layout on small screens
+- **Premium Dark UI**: Deep-space glassmorphism design with violet/indigo gradients
+- **CI/CD**: GitHub Actions pipeline validates every build automatically
+
+---
+
+## 📦 Contract Functions
+
+| Function | Args | Description |
+|---|---|---|
+| `create_proposal` | `creator, title, description, duration_ledgers` | Creates a new on-chain proposal |
+| `vote` | `voter, proposal_id, approve: bool` | Casts a yes/no vote (requires auth, one per wallet) |
+| `get_proposal` | `proposal_id` | Returns full proposal data |
+| `get_proposal_count` | — | Returns total number of proposals |
+
+---
 
 ## 💻 Tech Stack
-- **Smart Contracts:** Rust, Soroban SDK
-- **Frontend:** React, Vite, Node.js, `lucide-react`, `@stellar/freighter-api`
-- **Blockchain Interface:** `@stellar/stellar-sdk`
-- **Styling:** Vanilla CSS (Outfit Font + Glassmorphism UI)
 
-## 🚀 Installation & Usage
+| Layer | Technology |
+|---|---|
+| Smart Contracts | Rust, Soroban SDK v22 |
+| Frontend Framework | React 18 + Vite 5 |
+| Blockchain SDK | `@stellar/stellar-sdk` v14 |
+| Wallet | `@stellar/freighter-api` v6 |
+| Styling | Vanilla CSS — Space Grotesk + Inter fonts |
+| CI/CD | GitHub Actions |
 
-### Start Frontend (Testnet Configured)
-Ensure you have the [Freighter Extension](https://www.freighter.app/) installed and switched to Testnet.
+---
+
+## 🚀 Local Setup
+
+### Prerequisites
+- [Freighter Extension](https://www.freighter.app/) installed and set to **Testnet**
+- Node.js v18+
+- Free testnet XLM from [Stellar Friendbot](https://friendbot.stellar.org)
+
+### Run Frontend
+
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-Visit http://localhost:5173. The UI will instantly display the dynamic staking dashboard and ask Freighter for permissions!
 
-## 📖 Git History Requirements
-This repository was meticulously crafted from start to finish via **10+ meaningful commits** tracking the full lifecycle of architecture, CI testing, and blockchain hookups.
+Visit `http://localhost:5173`
+
+### Build Soroban Contract (optional)
+
+```bash
+cd contracts
+stellar contract build --package voting
+stellar contract deploy --package voting --network testnet --source <your-identity>
+```
+
+---
+
+## 📖 How to Use
+
+1. **Connect Wallet** — Click "Connect Wallet" → approve in Freighter
+2. **Create Proposal** — Click "+ New", fill in title + description + duration, submit
+3. **Vote** — Click a proposal card, then "Vote Yes" or "Vote No"
+4. **View Results** — Vote bars update live; expired proposals show final verdict
+
+---
+
+## 📖 Git History
+
+This project was built with **10+ meaningful commits** tracking the full lifecycle:
+contract architecture → Soroban deployment → frontend integration → responsive design → CI/CD setup.
