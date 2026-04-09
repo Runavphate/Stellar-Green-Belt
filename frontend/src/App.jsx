@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { isConnected, requestAccess, signTransaction, getNetwork } from '@stellar/freighter-api'
 import * as StellarSdk from '@stellar/stellar-sdk'
-const { rpc } = StellarSdk
+import { Server as RpcServer, Api as RpcApi } from '@stellar/stellar-sdk/rpc'
 
 const VOTING_CONTRACT_ID = 'CAZLCX7HB4K7VUXBIO27UODIHGVOJ3FGVWK5BTEVHGN275RKEVVE4KEX'
 const RPC_URL = 'https://soroban-testnet.stellar.org'
@@ -9,7 +9,7 @@ const NETWORK_PASSPHRASE = StellarSdk.Networks.TESTNET
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-const server = new rpc.Server(RPC_URL)
+const server = new RpcServer(RPC_URL)
 
 async function simulateReadCall(funcName, args = []) {
   const kp = StellarSdk.Keypair.random()
@@ -24,7 +24,7 @@ async function simulateReadCall(funcName, args = []) {
     .build()
 
   const sim = await server.simulateTransaction(tx)
-  if (rpc.Api.isSimulationError(sim)) throw new Error(sim.error)
+  if (RpcApi.isSimulationError(sim)) throw new Error(sim.error)
   const result = sim.result?.retval
   return result
 }
