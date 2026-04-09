@@ -23,7 +23,7 @@ A fully decentralized voting application built on the Stellar blockchain using S
 ### Desktop View
 ![Desktop View](./screenshots/desktop-view.png)
 
-### Mobile View (390×844 — iPhone 14)
+### Mobile View
 ![Mobile View](./screenshots/mobile-view.png)
 
 ---
