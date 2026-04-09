@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { isConnected, requestAccess, signTransaction, getNetwork } from '@stellar/freighter-api'
 import * as StellarSdk from '@stellar/stellar-sdk'
-import { rpc } from '@stellar/stellar-sdk'
+const { rpc } = StellarSdk
 
 const VOTING_CONTRACT_ID = 'CAZLCX7HB4K7VUXBIO27UODIHGVOJ3FGVWK5BTEVHGN275RKEVVE4KEX'
 const RPC_URL = 'https://soroban-testnet.stellar.org'
