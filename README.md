@@ -10,7 +10,7 @@ A fully decentralized voting application built on the Stellar blockchain using S
 
 | Requirement | Status |
 |---|---|
-| Live Demo (Vercel/Netlify) | ⚠️ [Add your deployed URL here after deploying] |
+| Live Demo (Vercel/Netlify) | ✅ [https://stellar-green-belt-silk.vercel.app](https://stellar-green-belt-silk.vercel.app) |
 | Mobile-Responsive Screenshot | ✅ See [Screenshots](#-screenshots) below |
 | CI/CD Pipeline | ✅ GitHub Actions — see [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) |
 | Smart Contract Address | ✅ `CAZLCX7HB4K7VUXBIO27UODIHGVOJ3FGVWK5BTEVHGN275RKEVVE4KEX` |
