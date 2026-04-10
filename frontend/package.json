@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@stellar/freighter-api": "^6.0.1",
-    "@stellar/stellar-sdk": "^11.2.1",
+    "@stellar/stellar-sdk": "^14.6.1",
     "lucide-react": "^0.364.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
