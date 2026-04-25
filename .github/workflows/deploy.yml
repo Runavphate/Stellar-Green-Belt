@@ -28,3 +28,37 @@ jobs:
       - name: Build Frontend
         working-directory: ./frontend
         run: npm run build
+
+  build_test_contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Cache Cargo
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            contracts/target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Check Formatting
+        working-directory: ./contracts
+        run: cargo fmt --all -- --check
+
+      - name: Run Contract Tests
+        working-directory: ./contracts
+        run: cargo test
+
+      - name: Build Contracts (WASM)
+        working-directory: ./contracts
+        run: cargo build --target wasm32-unknown-unknown --release

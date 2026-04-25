@@ -4,6 +4,9 @@ use soroban_sdk::{
     Address, Env, String, symbol_short,
 };
 
+#[cfg(test)]
+mod test;
+
 // ── Storage keys ────────────────────────────────────────────────────────────
 
 #[derive(Clone)]

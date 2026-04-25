@@ -40,7 +40,7 @@ A fully decentralized voting application built on the Stellar blockchain using S
 
 ## ⚙️ CI/CD Pipeline
 
-This project uses **GitHub Actions** to automatically build the frontend on every push to `main`.
+This project uses **GitHub Actions** to automatically build the frontend and verify the smart contracts (formatting, testing, and compilation) on every push to `main`.
 
 ```yaml
 # .github/workflows/deploy.yml
@@ -48,6 +48,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [main]
+
 jobs:
   build_frontend:
     runs-on: ubuntu-latest
@@ -59,6 +60,19 @@ jobs:
         working-directory: ./frontend
       - run: npm run build
         working-directory: ./frontend
+
+  build_test_contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@stable
+        with: { targets: wasm32-unknown-unknown }
+      - run: cargo fmt --all -- --check
+        working-directory: ./contracts
+      - run: cargo test
+        working-directory: ./contracts
+      - run: cargo build --target wasm32-unknown-unknown --release
+        working-directory: ./contracts
 ```
 
 ![CI Badge](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/deploy.yml/badge.svg)
